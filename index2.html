@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://unpkg.com/vue@2.7.14/dist/vue.js"></script>
+
+    <div id="app">
+      <blog-post
+      v-bind:name="post.name"
+      v-for="post in posts"
+      v-bind:key="post.id"
+      v-bind:Greeting="post.Greeting"
+      >
+      </blog-post>
+    </div>
+
+    <script>
+      Vue.component("blog-post", {
+        template: "<h3>{{Greeting}} {{ name }}</h3>",
+        props: ["Greeting",  "name"],
+      });
+
+    new Vue({
+  el: '#app',
+  
+  data: {
+    posts: [
+      { id: 1, Greeting: "Привет, ",name: 'Олег'},
+    ],
+  },
+  
+}); 
+
+    </script>
+</body>
+</html>
